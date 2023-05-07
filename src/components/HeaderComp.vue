@@ -1,14 +1,13 @@
 <script>
 export default {
-    name: 'HeaderComp',
-    props: ['test']
+    name: 'HeaderComp'
 }
 </script>
 
 <template>
     <header>
 
-        <div class="container">
+        <div class="container d-flex align-items-center">
 
             <div id="logo">
                 <img src="/img/yu-gi-oh_logo.png" alt="logo yu-gi-oh">
@@ -31,7 +30,6 @@ header {
     .container {
         width: 90%;
         height: 90px;
-        @include center('vertical');
 
         #logo {
             flex-basis: 10%;

@@ -1,12 +1,14 @@
 <script>
 import axios from 'axios';
-import HeaderComp from './components/HeaderComp.vue';
 import { store } from './store.js';
+import HeaderComp from './components/HeaderComp.vue';
+import MainComp from './components/MainComp.vue';
 
 export default {
     name: "App",
     components: {
-        HeaderComp
+        HeaderComp,
+        MainComp
     },
     data() {
         return {
@@ -15,7 +17,7 @@ export default {
     },
 
     created() {
-        axios.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?num=15&offset=0").then(response => {
+        axios.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?num=15&offset=0&archetype=alien").then(response => {
             console.log(response.data.data);
             this.store.arrayCarte = response.data.data;
             console.log(this.store.arrayCarte);
@@ -26,7 +28,8 @@ export default {
 </script>
 
 <template>
-    <HeaderComp :test="'ciao'" />
+    <HeaderComp />
+    <MainComp />
 </template>
 
 <style lang="scss">
