@@ -48,7 +48,7 @@ export default {
 
                 let archetype = `&archetype=${store.selected}`
 
-                return axios.get(`${store.pathDefault}${archetype}`)
+                return axios.get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?num=15&offset=0${archetype}`)
                     .then(response => {
 
                         store.arrayCarte = response.data.data;
