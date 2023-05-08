@@ -22,20 +22,7 @@ export default {
         <div class="container cont-select">
             <select class="form-select" name="archetype" id="archetype" v-model="store.selected" @click="$emit('search')">
                 <option selected disabled value="">Scegli l'archetipo</option>
-                <option value="Alien">Alien</option>
-                <option value='"C"'>"C"</option>
-                <option value="-Eyes Dragon">-Eyes Dragon</option>
-                <option value="@Ignister">@Ignister</option>
-                <option value="A.I.">A.I.</option>
-                <option value="ABC">ABC</option>
-                <option value="Abyss Actor">Abyss Actor</option>
-                <option value="Abyss Script">Abyss Script</option>
-                <option value="Adamancipator">Adamancipator</option>
-                <option value="Advanced Crystal Beast">Advanced Crystal Beast</option>
-                <option value="Adventurer Token">Adventurer Token</option>
-                <option value="Aesir">Aesir</option>
-                <option value="Aether">Aether</option>
-                <option value="Albaz Dragon">Albaz Dragon</option>
+
             </select>
         </div>
 
