@@ -35,25 +35,34 @@ export default {
     },
 
     computed: {
+
+        // funzione che in base alla scelta dell'utente mi stampa le carte della tipologia scelta
         searchArchetype() {
 
+            // animazione impostata su true di default affinche l'utente non sceglierà una tipologia di carte da stampare
             store.animat = true;
 
             if (!store.selected == "") {
 
                 store.animat = false;
 
-                return axios.get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?num=15&offset=0&archetype=${store.selected}`)
+                let archetype = `&archetype=${store.selected}`
+
+                return axios.get(`${store.pathDefault}${archetype}`)
                     .then(response => {
 
                         store.arrayCarte = response.data.data;
+
+                        console.log(response.data.meta)
                     })
                     .catch(function (error) {
                         console.log(error);
                     })
             }
         }
-    }
+
+    },
+
 }
 
 </script>
@@ -61,8 +70,8 @@ export default {
 <template>
     <div>
 
-        <HeaderComp @search="searchArchetype" />
-        <MainComp />
+        <HeaderComp />
+        <MainComp @search="searchArchetype" />
     </div>
 </template>
 
