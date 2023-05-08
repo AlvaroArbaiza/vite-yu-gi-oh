@@ -18,13 +18,14 @@ export default {
 
 <style lang="scss" scoped>
 @use '../../src/style/partials/_mixin.scss' as *;
+@use '../style/partials/_variables.scss' as *;
 
 .cardYugi {
     flex-basis: calc(100% / 5 - 0.8rem);
 
     .container_card {
         height: 100%;
-        background-color: #d48f38;
+        background-color: $bg-sand;
 
         img {
             margin-bottom: 0.8rem;

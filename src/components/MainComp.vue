@@ -1,11 +1,13 @@
 <script>
 import CardComp from '../components/CardComp.vue';
+import AnimationComp from '../components/AnimationComp.vue';
 import { store } from '../store.js';
 
 export default {
     name: 'MainComp',
     components: {
-        CardComp
+        CardComp,
+        AnimationComp
     },
     data() {
         return {
@@ -34,8 +36,13 @@ export default {
                 <span>Found {{ store.arrayCarte.length }} cards</span>
             </div>
 
+            <!-- loader -->
+            <div v-if="store.animat == true" class="container">
+                <AnimationComp />
+            </div>
+
             <!-- cards -->
-            <div class="container d-flex container-cards">
+            <div v-else class="container d-flex container-cards">
 
                 <CardComp v-for="(elem, index) in store.arrayCarte" :key="index" :card="elem" />
             </div>
@@ -47,10 +54,11 @@ export default {
 
 <style lang="scss" scoped>
 @use '../../src/style/partials/_mixin.scss' as *;
+@use '../style/partials/_variables.scss' as *;
 
 main {
     width: 100%;
-    background-color: #d48f38;
+    background-color: $bg-sand;
 
     .container {
         margin: 0;
@@ -78,7 +86,7 @@ main {
         #cards-found {
             height: 3rem;
             color: #fff;
-            background-color: #212529;
+            background-color: $bg-black;
         }
 
         // container cards

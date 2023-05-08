@@ -36,12 +36,17 @@ export default {
 
     computed: {
         searchArchetype() {
-            if (!this.store.selected == "") {
 
-                return axios.get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?num=15&offset=0&archetype=${this.store.selected}`)
+            store.animat = true;
+
+            if (!store.selected == "") {
+
+                store.animat = false;
+
+                return axios.get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?num=15&offset=0&archetype=${store.selected}`)
                     .then(response => {
 
-                        this.store.arrayCarte = response.data.data;
+                        store.arrayCarte = response.data.data;
                     })
                     .catch(function (error) {
                         console.log(error);
@@ -54,8 +59,11 @@ export default {
 </script>
 
 <template>
-    <HeaderComp @search="searchArchetype" />
-    <MainComp />
+    <div>
+
+        <HeaderComp @search="searchArchetype" />
+        <MainComp />
+    </div>
 </template>
 
 <style lang="scss">
