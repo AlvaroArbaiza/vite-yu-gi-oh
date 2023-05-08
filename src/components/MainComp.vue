@@ -18,10 +18,12 @@ export default {
 <template>
     <main class="py-4">
 
+        <!-- select -->
         <div class="container cont-select">
-            <select class="form-select" aria-label="Default select example" name="archetype" id="archetype">
+            <select class="form-select" name="archetype" id="archetype" v-model="store.selected" @click="$emit('search')">
+                <option selected disabled value="">Scegli l'archetipo</option>
                 <option value="Alien">Alien</option>
-                <option value='\"C\"'>\"C\"</option>
+                <option value='"C"'>"C"</option>
                 <option value="-Eyes Dragon">-Eyes Dragon</option>
                 <option value="@Ignister">@Ignister</option>
                 <option value="A.I.">A.I.</option>
@@ -37,11 +39,15 @@ export default {
             </select>
         </div>
 
+        <!-- container white -->
         <div class="container-white">
+
+            <!-- cards found -->
             <div class="container d-flex align-items-center ps-2" id="cards-found">
-                <span>Found 39 cards</span>
+                <span>Found {{ store.arrayCarte.length }} cards</span>
             </div>
 
+            <!-- cards -->
             <div class="container d-flex container-cards">
 
                 <CardComp v-for="(elem, index) in store.arrayCarte" :key="index" :card="elem" />
@@ -70,7 +76,7 @@ main {
         margin: 0 auto 1rem;
 
         #archetype {
-            width: 10rem;
+            width: 11rem;
         }
     }
 

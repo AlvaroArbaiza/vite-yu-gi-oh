@@ -3,6 +3,7 @@ import axios from 'axios';
 import { store } from './store.js';
 import HeaderComp from './components/HeaderComp.vue';
 import MainComp from './components/MainComp.vue';
+import { computed } from 'vue';
 
 export default {
     name: "App",
@@ -17,18 +18,25 @@ export default {
     },
 
     created() {
-        axios.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?num=15&offset=0&archetype=alien").then(response => {
-            console.log(response.data.data);
-            this.store.arrayCarte = response.data.data;
-            console.log(this.store.arrayCarte);
-        })
+    },
+
+    computed: {
+        searchArchetype() {
+            if (!this.store.selected == "") {
+
+                return axios.get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?num=15&offset=0&archetype=${this.store.selected}`).then(response => {
+
+                    this.store.arrayCarte = response.data.data;
+                })
+            }
+        }
     }
 }
 
 </script>
 
 <template>
-    <HeaderComp />
+    <HeaderComp @search="searchArchetype" />
     <MainComp />
 </template>
 
